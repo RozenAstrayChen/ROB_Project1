@@ -6,6 +6,9 @@ import utlis
 
 
 def question1():
+    '''
+    forward kinematics
+    '''
     select = int(input('1. using default 50 angle\n2. input angle\n'))
     if select == 2:
         angles = utlis.collect_angle()
@@ -30,6 +33,9 @@ def question1():
     return  res
 
 def question2(Tn):
+    '''
+    inverse kinematics
+    '''
     ik = Table.inverseKinematics(Tn)
     t1 = ik.findTheta_1()
     t3 = ik.findTheta_3()

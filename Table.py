@@ -42,6 +42,8 @@ def getPUMA560(input=None):
 class inverseKinematics():
     '''
     This is inverse kinematices class
+    The final want to find theta 1-6
+    and the order is 1 -> 3 -> 2 -> 4 -> 6 -> 5
     '''
     def __init__(self, Tn):
         '''
