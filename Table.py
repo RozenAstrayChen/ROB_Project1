@@ -3,6 +3,7 @@ import numpy as np
 def getTable(d, a, alpha, theta):
     '''
     [d, a, ahpla, theta]
+    return numpy array
     '''
     return np.array([
         [cos(theta), -sin(theta)*cos(alpha), sin(theta)*sin(alpha), a*cos(theta)],
@@ -11,24 +12,41 @@ def getTable(d, a, alpha, theta):
         [0, 0, 0, 1]
     ])
 
-def getPUMA560():
+def getPUMA560(input=None):
     '''
-    Joint d(m) a(m) alpha theta
+    numyp array is define by Joint d(m) a(m) alpha theta
+    you have two options. No any input is default angle 50,
+    input is array type
     return 6x4 arrself.ay
-    joints = [50/180*pi, 50/180*pi ,50/180*pi, 50/180*pi, 50/180*pi, 50/180*pi]
-
     '''
-    return np.array([
-        [0, 0, -90/180*pi, 50/180*pi],
-        [0, 0.432, 0, 50/180*pi],
-        [0.149, -0.02, 90/180*pi, 50/180*pi],
-        [0.433, 0, -90/180*pi, 50/180*pi],
-        [0, 0, 90/180*pi, 50/180*pi],
-        [0, 0, 0, 50/180*pi]
-    ])
+    if input == None:
+        '''default angle is 50'''
+        return np.array([
+            [0, 0, -90/180*pi, 50/180*pi],
+            [0, 0.432, 0, 50/180*pi],
+            [0.149, -0.02, 90/180*pi, 50/180*pi],
+            [0.433, 0, -90/180*pi, 50/180*pi],
+            [0, 0, 90/180*pi, 50/180*pi],
+            [0, 0, 0, 50/180*pi]
+        ])
+    else:
+        return np.array([
+            [0, 0, -90 / 180 * pi, input[0] / 180 * pi],
+            [0, 0.432, 0, input[0] / 180 * pi],
+            [0.149, -0.02, 90 / 180 * pi, input[0] / 180 * pi],
+            [0.433, 0, -90 / 180 * pi, input[0] / 180 * pi],
+            [0, 0, 90 / 180 * pi, input[0] / 180 * pi],
+            [0, 0, 0, input[0] / 180 * pi]
+        ])
 
 class inverseKinematics():
+    '''
+    This is inverse kinematices class
+    '''
     def __init__(self, Tn):
+        '''
+        Constructing by noap table
+        '''
         self.d3 = 0.149; self.d4 = 0.433;
         self.a2 = 0.432; self.a3 = -0.02;
 
